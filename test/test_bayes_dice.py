@@ -7,3 +7,7 @@ def test_class_works():
 def test_choose_die():
     bd = BayesDice()
     assert bd.choose_die() in bd.dice
+
+def test_roll_die():
+    bd = BayesDice()
+    bd.rolldie()
