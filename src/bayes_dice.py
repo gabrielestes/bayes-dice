@@ -1,5 +1,5 @@
 import random
-
+import numpy as np
 class BayesDice:
     def __init__(self):
         self.dice = [4, 6, 8, 12, 20]
@@ -10,14 +10,13 @@ class BayesDice:
         return self.die
 
     def roll_die(self):
-        roll = random.choice(range(1, self.dice + 1))
-        posterior = (bayes_theorem(roll))
-        return posterior
+        roll = random.choice(range(1, self.dice + 1)) # roll the die and get a random number from the die range
+        return (bayes_theorem(roll)) # execute bayes theorem once and set to posterior, P(B|A)
 
     def bayes_theorem(self, roll):
-        posterior = (1/self.die) * .2 / (prob_of_roll(self.die))
-        return posterior
+        return (1/self.die) * .2 / (prob_of_roll(self.die))
 
     def prob_of_roll(self, roll):
         valid_dice = [die for die in self.dice if roll <= die]
-        print(valid_dice)
+        each_prob = sum([1/die for die in valid_dice])/50
+        options = (valid_dice.count())/50
